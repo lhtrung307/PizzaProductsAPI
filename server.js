@@ -5,6 +5,8 @@ const Vision = require("vision");
 const Pack = require("./package.json");
 
 const productRouter = require("./routes/product-routes");
+const categoryRouter = require("./routes/category-routes");
+
 const port = process.env.PORT || 3000;
 const server = Hapi.server({
   port,
@@ -13,7 +15,8 @@ const server = Hapi.server({
 
 exports.init = async () => {
   await server.register({
-    plugin: productRouter
+    plugin: productRouter,
+    plugin: categoryRouter
   });
   return server;
 };
