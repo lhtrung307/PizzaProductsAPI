@@ -14,10 +14,14 @@ const server = Hapi.server({
 });
 
 exports.init = async () => {
-  await server.register({
-    plugin: productRouter,
-    plugin: categoryRouter
-  });
+  await server.register([
+    {
+      plugin: productRouter
+    },
+    {
+      plugin: categoryRouter
+    }
+  ]);
   return server;
 };
 
