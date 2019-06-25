@@ -5,8 +5,9 @@ const Vision = require("vision");
 const Pack = require("./package.json");
 
 const productRouter = require("./routes/product-routes");
+const port = process.env.PORT || 3000;
 const server = Hapi.server({
-  port: process.env.PORT || 3000,
+  port,
   host: "localhost"
 });
 
