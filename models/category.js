@@ -2,21 +2,34 @@ const Mongoose = require("mongoose");
 
 const Schema = Mongoose.Schema;
 
-const CategorySchema = new Schema({
-  name: {
-    type: String,
-    unique: true,
-    required: "Category must have a name"
+const CategorySchema = new Schema(
+  {
+    name: {
+      type: String,
+      unique: true,
+      required: "Category must have a name"
+    },
+    description: String
   },
-  description: String
-});
+  { versionKey: false }
+);
 
 const CategoryModel = Mongoose.model("category", CategorySchema);
 
 const getAll = (sortType) =>
   CategoryModel.find({})
+    .select("-__v")
     .sort(sortType)
     .then((categories) => categories)
+    .catch((error) => {
+      return { error };
+    });
+
+const save = (category) =>
+  CategoryModel.create(category)
+    .then((createdCategory) => {
+      return createdCategory;
+    })
     .catch((error) => {
       return { error };
     });
@@ -24,5 +37,6 @@ const getAll = (sortType) =>
 module.exports = {
   CategorySchema,
   CategoryModel,
-  getAll
+  getAll,
+  save
 };

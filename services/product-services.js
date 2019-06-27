@@ -2,7 +2,7 @@ const Products = require("../models/product");
 
 const Joi = require("@hapi/joi");
 class ProductServices {
-  async getAllProducts(sortType) {
+  async getAllPizzas(sortType) {
     let sort;
     if (!sortType && (sortType !== 1 || sortType !== -1)) {
       console.log(sortType);
@@ -10,7 +10,7 @@ class ProductServices {
     } else {
       sort = { rating: sortType };
     }
-    let products = await Products.getAll();
+    let products = await Products.getAllPizzas(sort);
     if (products.error) {
       throw products.error;
     }

@@ -8,7 +8,7 @@ const Router = {
   register: async (server, options) => {
     server.route({
       method: "GET",
-      path: "/products",
+      path: "/pizzas",
       options: {
         description: "Get list of products",
         tags: ["api", "order-pizza", "product"]
@@ -17,7 +17,7 @@ const Router = {
     });
     server.route({
       method: "GET",
-      path: "/products/{id}",
+      path: "/pizzas/{id}",
       options: {
         description: "Get product detail by id",
         tags: ["api", "order-pizza", "product"]

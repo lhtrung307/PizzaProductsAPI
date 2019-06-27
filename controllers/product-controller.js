@@ -7,11 +7,11 @@ module.exports.list = async (request, h) => {
     sortType = query.sort;
   }
   try {
-    const products = await ProductServices.getAllProducts(sortType);
-    if (products) {
-      return h.response(products).code(200);
+    const pizzas = await ProductServices.getAllPizzas(sortType);
+    if (pizzas) {
+      return h.response(pizzas).code(200);
     } else {
-      return h.response({ message: "You don't have any task." });
+      return h.response({ message: "You don't have any product." });
     }
   } catch (error) {
     return h.response(error.message).code(500);

@@ -6,11 +6,15 @@ const Pack = require("./package.json");
 
 const productRouter = require("./routes/product-routes");
 const categoryRouter = require("./routes/category-routes");
+const variantRouter = require("./routes/variant-routes");
 
 const port = process.env.PORT || 3000;
 const server = Hapi.server({
   port,
-  host: "0.0.0.0"
+  host: "0.0.0.0",
+  routes: {
+    cors: true
+  }
 });
 
 exports.init = async () => {
@@ -20,6 +24,9 @@ exports.init = async () => {
     },
     {
       plugin: categoryRouter
+    },
+    {
+      plugin: variantRouter
     }
   ]);
   return server;

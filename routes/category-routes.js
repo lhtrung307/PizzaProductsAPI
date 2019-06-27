@@ -1,4 +1,13 @@
 const CategoryControllers = require("../controllers/category-controller");
+const Joi = require("@hapi/joi");
+
+const categoryResponse = Joi.object()
+  .keys({
+    _id: Joi.string().optional(),
+    name: Joi.string().optional(),
+    description: Joi.string().optional()
+  })
+  .label("Result");
 
 const Router = {
   name: "category-router",
@@ -8,10 +17,30 @@ const Router = {
       method: "GET",
       path: "/categories",
       options: {
+        cors: true,
         description: "Get list of categories",
-        tags: ["api", "order-pizza", "categories"]
+        tags: ["api", "order-pizza", "categories"],
+        response: { schema: categoryResponse }
       },
       handler: CategoryControllers.list
+    });
+    server.route({
+      method: "POST",
+      path: "/categories",
+      options: {
+        validate: {
+          payload: Joi.object()
+            .keys({
+              name: Joi.string().required(),
+              description: Joi.string().required()
+            })
+            .label("Body")
+        },
+        description: "Create new categories",
+        tags: ["api", "order-pizza", "categories"],
+        response: { schema: categoryResponse }
+      },
+      handler: CategoryControllers.create
     });
   }
 };

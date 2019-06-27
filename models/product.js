@@ -63,8 +63,16 @@ const ProductSchema = new Schema({
 
 const ProductModel = Mongoose.model("product", ProductSchema);
 
-const getAll = (sortType) =>
-  ProductModel.find({})
+const getAllPizzas = (sortType) =>
+  ProductModel.find({ type: "pizza" })
+    .sort(sortType)
+    .then((products) => products)
+    .catch((error) => {
+      return { error };
+    });
+
+const getAllToppings = (sortType) =>
+  ProductModel.find({ type: "topping" })
     .sort(sortType)
     .then((products) => products)
     .catch((error) => {
@@ -89,7 +97,8 @@ const getProductsByCategoryID = (categoryID, sortType) =>
 module.exports = {
   ProductSchema,
   ProductModel,
-  getAll,
+  getAllPizzas,
+  getAllToppings,
   getProductByID,
   getProductsByCategoryID
 };

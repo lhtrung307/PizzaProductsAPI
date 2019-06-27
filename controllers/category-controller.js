@@ -7,7 +7,7 @@ module.exports.list = async (request, h) => {
     sortType = query.sort;
   }
   try {
-    const categories = CategoryServices.getAllCategories(sortType);
+    const categories = await CategoryServices.getAllCategories(sortType);
     if (categories) {
       return h.response(categories).code(200);
     } else {
@@ -15,5 +15,16 @@ module.exports.list = async (request, h) => {
     }
   } catch (error) {
     return h.response(error.message).code(500);
+  }
+};
+
+module.exports.create = async (request, h) => {
+  let category = request.payload;
+  try {
+    const createdCategory = await CategoryServices.createCategory(category);
+    console.log(createdCategory);
+    return h.response(createdCategory).code(200);
+  } catch (error) {
+    return h.response(error.stack).code(500);
   }
 };

@@ -11,16 +11,27 @@ const VariantSchema = new Schema({
   },
   acceptValues: {
     type: Array,
-    enum: [""],
-    default: [],
     required: "Variant must have accept values"
   },
   type: {
     type: String,
-    enum: [""],
+    enum: ["string", "number", "options"],
     required: "Variant must have type"
   },
   label: String
 });
 
-module.exports = Mongoose.model("variant", VariantSchema);
+const VariantModel = Mongoose.model("variant", VariantSchema);
+
+const save = (variant) =>
+  VariantModel.create(variant)
+    .then((createdVariant) => createdVariant)
+    .catch((error) => {
+      return { error };
+    });
+
+module.exports = {
+  VariantSchema,
+  VariantModel,
+  save
+};
