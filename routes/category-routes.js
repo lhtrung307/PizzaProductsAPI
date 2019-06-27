@@ -17,10 +17,18 @@ const Router = {
       method: "GET",
       path: "/categories",
       options: {
-        cors: true,
+        validate: {
+          failAction: (request, h, error) => {
+            return error.isJoi
+              ? h.response(error.details[0]).takeover()
+              : h.response(error).takeover();
+          }
+        },
         description: "Get list of categories",
         tags: ["api", "order-pizza", "categories"],
-        response: { schema: categoryResponse }
+        // response: {
+        //   schema: categoryResponse
+        // }
       },
       handler: CategoryControllers.list
     });
@@ -34,7 +42,12 @@ const Router = {
               name: Joi.string().required(),
               description: Joi.string().required()
             })
-            .label("Body")
+            .label("Body"),
+          failAction: (request, h, error) => {
+            return error.isJoi
+              ? h.response(error.details[0]).takeover()
+              : h.response(error).takeover();
+          }
         },
         description: "Create new categories",
         tags: ["api", "order-pizza", "categories"],

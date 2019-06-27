@@ -28,6 +28,19 @@ class ProductServices {
     return product;
   }
 
+  async getProductByIDs(productIDs) {
+    if (!productIDs) {
+      throw new Error("Product ids cannot be empty");
+    }
+    let products = await Promise.all(
+      productIDs.map(
+        async (productID) => await Products.getProductByID(productID)
+      )
+    );
+    console.log(products);
+    return products;
+  }
+
   productValidate() {
     return Joi.object().keys({
       type: Joi.string().required(),

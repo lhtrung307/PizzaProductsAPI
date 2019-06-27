@@ -31,3 +31,17 @@ module.exports.detail = async (request, h) => {
     h.response(error).code(500);
   }
 };
+
+module.exports.listByIDs = async (request, h) => {
+  try {
+    let productIDs = request.payload;
+    let products = await ProductServices.getProductByIDs(productIDs);
+    if (products == null) {
+      return h.response({}).code(404);
+    } else {
+      return h.response(products);
+    }
+  } catch (error) {
+    h.response(error).code(500);
+  }
+};

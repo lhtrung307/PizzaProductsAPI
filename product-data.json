@@ -5,12 +5,12 @@
     "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
     "name": "Pizza 3 con tôm",
     "description": "Chỉ gồm 3 con tôm siêu bự",
-    "price": { "numberDecimal": "0" },
-    "discountPrice": { "numberDecimal": "0" },
+    "price": 0,
+    "discountPrice": 0,
     "variantProducts": [
-      { "key": "size", "value": "S", "price": "100000" },
-      { "key": "size", "value": "M", "price": "200000" },
-      { "key": "size", "value": "L", "price": "300000" }
+      { "key": "size", "value": "S", "price": 100000 },
+      { "key": "size", "value": "M", "price": 200000 },
+      { "key": "size", "value": "L", "price": 300000 }
     ]
   },
   {
@@ -19,12 +19,12 @@
     "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
     "name": "Pizza bạch tuộc nướng BBQ",
     "description": "Bạch tuộc nướng gần chín",
-    "price": { "numberDecimal": "0" },
-    "discountPrice": { "numberDecimal": "0" },
-    " variantProducts :": [
-      { "key": "size", "value": "S", "price": { "numberDecimal": "100000" } },
-      { "key": "size", "value": "M", "price": { "numberDecimal": "200000" } },
-      { "key": "size", "value": "L", "price": { "numberDecimal": "300000" } }
+    "price": 0,
+    "discountPrice": 0,
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 100000 },
+      { "key": "size", "value": "M", "price": 200000 },
+      { "key": "size", "value": "L", "price": 300000 }
     ]
   },
   {
@@ -33,12 +33,12 @@
     "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
     "name": "Pizza sầu riêng",
     "description": "Nỗi sầu không của riêng ai",
-    "price": { "numberDecimal": "0" },
-    "discountPrice": { "numberDecimal": "0" },
-    " variantProducts :": [
-      { "key": "size", "value": "S", "price": { "numberDecimal": "100000" } },
-      { "key": "size", "value": "M", "price": { "numberDecimal": "200000" } },
-      { "key": "size", "value": "L", "price": { "numberDecimal": "300000" } }
+    "price": 0,
+    "discountPrice": 0,
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 100000 },
+      { "key": "size", "value": "M", "price": 200000 },
+      { "key": "size", "value": "L", "price": 300000 }
     ]
   },
   {
@@ -47,12 +47,12 @@
     "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
     "name": "Pizza gà rim Coop Mart",
     "description": "Gà nhiều tới nỗi bạn ăn chỉ muốn khóc",
-    "price": { "numberDecimal": "0" },
-    "discountPrice": { "numberDecimal": "0" },
-    " variantProducts :": [
-      { "key": "size", "value": "S", "price": { "numberDecimal": "100000" } },
-      { "key": "size", "value": "M", "price": { "numberDecimal": "200000" } },
-      { "key": "size", "value": "L", "price": { "numberDecimal": "300000" } }
+    "price": 0,
+    "discountPrice": 0,
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 100000 },
+      { "key": "size", "value": "M", "price": 200000 },
+      { "key": "size", "value": "L", "price": 300000 }
     ]
   },
   {
@@ -61,12 +61,12 @@
     "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
     "name": "Pizza sữa chua nếp cẩm",
     "description": "Nếp cẩm hay là nếp than đây???",
-    "price": { "numberDecimal": "0" },
-    "discountPrice": { "numberDecimal": "0" },
-    " variantProducts :": [
-      { "key": "size", "value": "S", "price": { "numberDecimal": "100000" } },
-      { "key": "size", "value": "M", "price": { "numberDecimal": "200000" } },
-      { "key": "size", "value": "L", "price": { "numberDecimal": "300000" } }
+    "price": 0,
+    "discountPrice": 0,
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 100000 },
+      { "key": "size", "value": "M", "price": 200000 },
+      { "key": "size", "value": "L", "price": 300000 }
     ]
   }
 ]
