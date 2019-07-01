@@ -1,8 +1,8 @@
 [
   {
     "type": "pizza",
-    "categoryIDs": ["5d11ef9625ae3c4d440caa89"],
-    "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
+    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
     "name": "Pizza 3 con tôm",
     "description": "Chỉ gồm 3 con tôm siêu bự",
     "price": 0,
@@ -15,8 +15,8 @@
   },
   {
     "type": "pizza",
-    "categoryIDs": ["5d11ef9625ae3c4d440caa89"],
-    "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
+    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
     "name": "Pizza bạch tuộc nướng BBQ",
     "description": "Bạch tuộc nướng gần chín",
     "price": 0,
@@ -29,8 +29,8 @@
   },
   {
     "type": "pizza",
-    "categoryIDs": ["5d11ef9625ae3c4d440caa89"],
-    "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
+    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
     "name": "Pizza sầu riêng",
     "description": "Nỗi sầu không của riêng ai",
     "price": 0,
@@ -43,8 +43,8 @@
   },
   {
     "type": "pizza",
-    "categoryIDs": ["5d11ef9625ae3c4d440caa89"],
-    "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
+    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
     "name": "Pizza gà rim Coop Mart",
     "description": "Gà nhiều tới nỗi bạn ăn chỉ muốn khóc",
     "price": 0,
@@ -57,8 +57,8 @@
   },
   {
     "type": "pizza",
-    "categoryIDs": ["5d11ef9625ae3c4d440caa89"],
-    "variantIDs": ["5d11fbeaf40e0f3cfc9c1a55"],
+    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
     "name": "Pizza sữa chua nếp cẩm",
     "description": "Nếp cẩm hay là nếp than đây???",
     "price": 0,

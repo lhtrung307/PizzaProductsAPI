@@ -17,6 +17,32 @@ class ProductServices {
     return products;
   }
 
+  async getPizzasByCategory(categoryID, sortType) {
+    let sort;
+    if (!categoryID) {
+      throw new Error("CategoryID cannot be empty");
+    }
+    if (!sortType && (sortType !== 1 || sortType !== -1)) {
+      console.log(sortType);
+      sort = {};
+    } else {
+      sort = { rating: sortType };
+    }
+    let products = await Products.getProductsByCategoryID(categoryID, sort);
+    if (products.error) {
+      throw products.error;
+    }
+    return products;
+  }
+
+  async getAllToppings() {
+    let toppings = await Products.getToppings();
+    if (toppings.error) {
+      throw toppings.error;
+    }
+    return toppings;
+  }
+
   async getProductDetail(id) {
     if (!id && typeof id !== "string") {
       throw new Error("Product id cannot be empty");
@@ -39,6 +65,48 @@ class ProductServices {
     );
     console.log(products);
     return products;
+  }
+
+  async getProductsForCreateOrder(products) {
+    if (!products) {
+      throw new Error("Products cannot be empty");
+    }
+    let productInfos = await Promise.all(
+      products.map(async (product) => {
+        let productRecord = await Products.getProductByID(product.productID);
+        if (this.isDiscountProduct(productRecord)) {
+          product.pricingRule = {
+            discountType: productRecord.pricingRule.discountType,
+            discount: productRecord.pricingRule.discount
+          };
+        }
+        if (product.variants) {
+          product.variants = productRecord.variantProducts.filter(
+            (variantProduct) => {
+              for (let variant of product.variants) {
+                if (
+                  variantProduct.key === variant.key &&
+                  variantProduct.value === variant.value
+                ) {
+                  return variantProduct;
+                }
+              }
+            }
+          );
+        }
+        return product;
+      })
+    );
+    console.log(productInfos);
+    return productInfos;
+  }
+
+  isDiscountProduct(product) {
+    let today = new Date();
+    return (
+      product.pricingRule.toDate &&
+      product.pricingRule.toDate.getTime() > today.getTime()
+    );
   }
 
   productValidate() {

@@ -1,0 +1,26 @@
+[
+  {
+    "type": "topping",
+    "name": "Cheese",
+    "description": "Topping cheese",
+    "price": 30000
+  },
+  {
+    "type": "topping",
+    "name": "Mushroom",
+    "description": "Topping mushroom",
+    "price": 20000
+  },
+  {
+    "type": "topping",
+    "name": "Sausage",
+    "description": "Topping sausage",
+    "price": 30000
+  },
+  {
+    "type": "topping",
+    "name": "Shrimp",
+    "description": "Topping shrimp",
+    "price": 40000
+  }
+]

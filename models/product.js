@@ -11,15 +11,13 @@ const ProductSchema = new Schema({
   categoryIDs: [
     {
       type: Schema.Types.ObjectId,
-      ref: "category",
-      required: "Must have category id"
+      ref: "category"
     }
   ],
   variantIDs: [
     {
       type: Schema.Types.ObjectId,
-      ref: "variant",
-      required: "Must have variant ids"
+      ref: "variant"
     }
   ],
   name: {
@@ -29,7 +27,6 @@ const ProductSchema = new Schema({
   },
   description: String,
   price: Number,
-  discountPrice: Number,
   variantProducts: [
     {
       key: {
@@ -72,8 +69,8 @@ const getAllPizzas = (sortType) =>
       return { error };
     });
 
-const getAllToppings = (sortType) =>
-  ProductModel.find({ type: "topping" })
+const getToppings = (sortType) =>
+  ProductModel.find({ type: "topping" }, "_id name type description price")
     .sort(sortType)
     .then((products) => products)
     .catch((error) => {
@@ -87,9 +84,18 @@ const getProductByID = (productID) =>
       return { error };
     });
 
-const getProductsByCategoryID = (categoryID, sortType) =>
-  ProductModel.find({ categoryID })
+const getProductsByCategoryID = (categoryID, sortType) => {
+  return ProductModel.find({ categoryIDs: categoryID })
     .sort(sortType)
+    .then((product) => product)
+    .catch((error) => {
+      return { error };
+    });
+};
+
+const getProductForOrder = (productID) =>
+  ProductModel.findById(productID)
+    .select("")
     .then((product) => product)
     .catch((error) => {
       return { error };
@@ -99,7 +105,7 @@ module.exports = {
   ProductSchema,
   ProductModel,
   getAllPizzas,
-  getAllToppings,
+  getToppings,
   getProductByID,
   getProductsByCategoryID
 };

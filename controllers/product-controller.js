@@ -18,6 +18,41 @@ module.exports.list = async (request, h) => {
   }
 };
 
+module.exports.listToppings = async (request, h) => {
+  try {
+    const toppings = await ProductServices.getAllToppings();
+    if (toppings) {
+      return h.response(toppings).code(200);
+    } else {
+      return h.response({ message: "You don't have any topping." });
+    }
+  } catch (error) {
+    return h.response(error.message).code(500);
+  }
+};
+
+module.exports.listByCategoryID = async (request, h) => {
+  let categoryID = request.params.id;
+  let query = request.query;
+  let sortType;
+  if (query.sort && (query.sort === 1 || query.sort === -1)) {
+    sortType = query.sort;
+  }
+  try {
+    const pizzas = await ProductServices.getPizzasByCategory(
+      categoryID,
+      sortType
+    );
+    if (pizzas) {
+      return h.response(pizzas).code(200);
+    } else {
+      return h.response({ message: "Category don't have any product." });
+    }
+  } catch (error) {
+    return h.response(error.message).code(500);
+  }
+};
+
 module.exports.detail = async (request, h) => {
   try {
     let productID = request.params.id;
@@ -34,14 +69,20 @@ module.exports.detail = async (request, h) => {
 
 module.exports.listByIDs = async (request, h) => {
   try {
-    let productIDs = request.payload;
-    let products = await ProductServices.getProductByIDs(productIDs);
-    if (products == null) {
+    // let products = {
+    //   productIDs: request.payload.productIDs,
+    //   variants: request.payload.variants
+    // };
+    let products = request.payload;
+    let productInfos = await ProductServices.getProductsForCreateOrder(
+      products
+    );
+    if (productInfos == null) {
       return h.response({}).code(404);
     } else {
-      return h.response(products);
+      return h.response(productInfos);
     }
   } catch (error) {
-    h.response(error).code(500);
+    return h.response(error.stack).code(500);
   }
 };

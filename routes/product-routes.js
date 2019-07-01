@@ -15,6 +15,7 @@ const Router = {
       },
       handler: ProductControllers.list
     });
+
     server.route({
       method: "GET",
       path: "/pizzas/{id}",
@@ -24,13 +25,19 @@ const Router = {
       },
       handler: ProductControllers.detail
     });
+
     server.route({
       method: "POST",
       path: "/pizzas",
       options: {
         validate: {
           payload: Joi.array()
-            .items(Joi.string().required())
+            .items(
+              Joi.object().keys({
+                productID: Joi.string().required(),
+                variants: Joi.array()
+              })
+            )
             .label("Body"),
           failAction: (request, h, error) => {
             return error.isJoi
@@ -38,10 +45,40 @@ const Router = {
               : h.response(error).takeover();
           }
         },
-        description: "Get products by product ids",
-        tags: ["api", "order-pizza", "product"]
+        description: "Get pizzas by pizza ids",
+        tags: ["api", "order-pizza", "pizza"]
       },
       handler: ProductControllers.listByIDs
+    });
+
+    server.route({
+      method: "GET",
+      path: "/pizzas/category/{id}",
+      options: {
+        validate: {
+          params: {
+            id: Joi.string().required()
+          },
+          failAction: (request, h, error) => {
+            return error.isJoi
+              ? h.response(error.details[0]).takeover()
+              : h.response(error).takeover();
+          }
+        },
+        description: "Get pizzas by pizza ids",
+        tags: ["api", "order-pizza", "pizzas"]
+      },
+      handler: ProductControllers.listByCategoryID
+    });
+
+    server.route({
+      method: "GET",
+      path: "/toppings",
+      options: {
+        description: "Get list of toppings",
+        tags: ["api", "order-pizza", "toppings"]
+      },
+      handler: ProductControllers.listToppings
     });
   }
 };
