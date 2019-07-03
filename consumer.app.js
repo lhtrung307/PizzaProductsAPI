@@ -5,7 +5,7 @@ let kafkaConf = {
   "group.id": "cloudkarafka-pricingrules",
   "metadata.broker.list": process.env.CLOUDKARAFKA_BROKERS.split(","),
   "socket.keepalive.enable": true,
-  "security.protocol": "SSL",
+  "security.protocol": "SASL_SSL",
   "sasl.mechanisms": "SCRAM-SHA-256",
   "sasl.username": process.env.CLOUDKARAFKA_USERNAME,
   "sasl.password": process.env.CLOUDKARAFKA_PASSWORD,
