@@ -29,10 +29,10 @@ const ProductSchema = new Schema({
   price: Number,
   variantProducts: [
     {
+      _id: false,
       key: {
         type: String,
         trim: true,
-        unique: true,
         required: "Variant product must have key"
       },
       value: {
@@ -62,7 +62,7 @@ const ProductModel = Mongoose.model("product", ProductSchema);
 
 const getAllPizzas = (sortType) =>
   ProductModel.find({ type: "pizza" })
-    .select("-variantID -type")
+    .select("-variantIDs -type")
     .sort(sortType)
     .then((products) => products)
     .catch((error) => {

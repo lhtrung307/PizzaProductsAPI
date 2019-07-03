@@ -1,17 +1,18 @@
 const ProductServices = require("../services/product-services");
+const Boom = require("@hapi/boom");
 
 module.exports.list = async (request, h) => {
   let query = request.query;
   let sortType;
-  if (query.sort && (query.sort === 1 || query.sort === -1)) {
-    sortType = query.sort;
+  if (query.sort && (query.sort === "1" || query.sort === "-1")) {
+    sortType = parseInt(query.sort);
   }
   try {
     const pizzas = await ProductServices.getAllPizzas(sortType);
     if (pizzas) {
       return h.response(pizzas).code(200);
-    } else {
-      return h.response({ message: "You don't have any product." });
+      // } else {
+      //   return h.response({ message: "You don't have any product." });
     }
   } catch (error) {
     return h.response(error.message).code(500);
@@ -56,13 +57,17 @@ module.exports.listByCategoryID = async (request, h) => {
 module.exports.detail = async (request, h) => {
   try {
     let productID = request.params.id;
+    if (productID.length !== 24) {
+      return Boom.badRequest("Invalid pizza id");
+    }
     let product = await ProductServices.getProductDetail(productID);
     if (product == null) {
-      return h.response({}).code(404);
+      return Boom.notFound("Pizza not found");
     } else {
       return h.response(product);
     }
   } catch (error) {
+    console.log(error.stack);
     h.response(error).code(500);
   }
 };

@@ -6,7 +6,6 @@ const VariantSchema = new Schema({
   key: {
     type: String,
     trim: true,
-    unique: true,
     required: "Variant must have key"
   },
   acceptValues: {

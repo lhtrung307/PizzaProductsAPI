@@ -5,10 +5,10 @@ class ProductServices {
   async getAllPizzas(sortType) {
     let sort;
     if (!sortType && (sortType !== 1 || sortType !== -1)) {
-      console.log(sortType);
       sort = {};
     } else {
-      sort = { rating: sortType };
+      sort = { name: sortType };
+      console.log(sort);
     }
     let products = await Products.getAllPizzas(sort);
     if (products.error) {
@@ -26,7 +26,7 @@ class ProductServices {
       console.log(sortType);
       sort = {};
     } else {
-      sort = { rating: sortType };
+      sort = { name: sortType };
     }
     let products = await Products.getProductsByCategoryID(categoryID, sort);
     if (products.error) {
@@ -48,6 +48,9 @@ class ProductServices {
       throw new Error("Product id cannot be empty");
     }
     let product = await Products.getProductByID(id);
+    if (!product) {
+      return null;
+    }
     if (product.error) {
       throw product.error;
     }
