@@ -1,5 +1,5 @@
 const Products = require("../models/product");
-
+const axios = require("axios");
 const Joi = require("@hapi/joi");
 class ProductServices {
   async getAllPizzas(sortType) {
@@ -93,6 +93,8 @@ class ProductServices {
               }
             }
           );
+        } else {
+          product.price = productRecord.price;
         }
         return product;
       })
@@ -129,6 +131,18 @@ class ProductServices {
 
   validateProduct(product) {
     return Joi.validate(product, this.productValidate);
+  }
+
+  async getBestSellers() {
+    let date = new Date();
+    date.setMonth(date.getMonth() - 1);
+    let result = await axios.get(
+      `https://pizza-orders.herokuapp.com/order-detail-report/${date}`
+    );
+    let orderDetails = result.data;
+    let productIDs = orderDetails.map((orderDetail) => orderDetail._id);
+    let bestSellers = await this.getProductByIDs(productIDs);
+    return bestSellers;
   }
 }
 

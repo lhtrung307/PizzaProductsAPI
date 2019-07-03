@@ -86,3 +86,12 @@ module.exports.listByIDs = async (request, h) => {
     return h.response(error.stack).code(500);
   }
 };
+
+module.exports.bestSellers = async (request, h) => {
+  try {
+    let bestSellers = await ProductServices.getBestSellers();
+    return h.response(bestSellers);
+  } catch (error) {
+    return h.response(error.message).code(500);
+  }
+};

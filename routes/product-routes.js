@@ -35,7 +35,7 @@ const Router = {
             .items(
               Joi.object().keys({
                 productID: Joi.string().required(),
-                variants: Joi.array()
+                variants: Joi.array().optional()
               })
             )
             .label("Body"),
@@ -65,7 +65,7 @@ const Router = {
               : h.response(error).takeover();
           }
         },
-        description: "Get pizzas by pizza ids",
+        description: "Get pizzas by category ids",
         tags: ["api", "order-pizza", "pizzas"]
       },
       handler: ProductControllers.listByCategoryID
@@ -79,6 +79,16 @@ const Router = {
         tags: ["api", "order-pizza", "toppings"]
       },
       handler: ProductControllers.listToppings
+    });
+
+    server.route({
+      method: "GET",
+      path: "/best-sellers",
+      options: {
+        description: "Get list of best seller pizzas",
+        tags: ["api", "order-pizza", "pizzas"]
+      },
+      handler: ProductControllers.bestSellers
     });
   }
 };
