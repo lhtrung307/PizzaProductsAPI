@@ -1,4 +1,5 @@
 const Kafka = require("node-rdkafka");
+const Product = require("./models/product")
 require("dotenv").config();
 
 let kafkaConf = {
@@ -28,13 +29,22 @@ consumer.on("ready", function(arg) {
   consumer.subscribe(topics);
   consumer.consume();
 });
-consumer.on("data", function(m) {
+consumer.on("data", async function(m) {
   counter++;
   if (counter % numMessages === 0) {
     console.log("calling commit");
     consumer.commit(m);
   }
-  console.log(m.value.toString());
+  if(m.key.toString() === "create"){
+    let pricingRule = JSON.parse(m.value.toString());
+    let {fromDate, toDate, discountType, discount} = pricingRule;
+    await Promise.all(pricingRule.productIDs.map(async productID => {
+      
+      let product = await Product.update(productID, {pricingRule: {fromDate, toDate, discountType, discount}});
+      console.log(product);
+    }))
+    console.log(pricingRule);
+  }
 });
 consumer.on("disconnected", function(arg) {
   process.exit();
