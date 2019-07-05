@@ -2,6 +2,27 @@ const Kafka = require("node-rdkafka");
 const Product = require("./models/product");
 require("dotenv").config();
 
+const updateProductPricingRule = async (pricingRuleData) => {
+  let pricingRule = JSON.parse(pricingRuleData);
+  let { fromDate, toDate, discountType, discount } = pricingRule;
+  console.log("Hello");
+  console.log(pricingRule);
+  let products = await Product.updateProducts(pricingRule.productIDs, {
+    pricingRule: { fromDate, toDate, discountType, discount }
+  });
+  return products;
+};
+
+const deleteProductPricingRule = async (pricingRuleData) => {
+  let pricingRule = JSON.parse(pricingRuleData);
+  console.log("Hello");
+  console.log(pricingRule);
+  let products = await Product.updateProducts(pricingRule.productIDs, {
+    pricingRule: {}
+  });
+  return products;
+};
+
 const Consumer = {
   name: "product-consumer",
   version: "1.0.0",
@@ -40,22 +61,20 @@ const Consumer = {
         consumer.commit(m);
       }
       if (m.key.toString() === "create") {
-        let pricingRule = JSON.parse(m.value.toString());
-        let { fromDate, toDate, discountType, discount } = pricingRule;
-        console.log("Hello");
-        console.log(pricingRule);
-        Promise.all(
-          pricingRule.productIDs.map(async (productID) => {
-            let product = await Product.updateByID(productID, {
-              pricingRule: { fromDate, toDate, discountType, discount }
-            });
-            return product;
-          })
-        )
+        updateProductPricingRule(m.value.toString())
           .then((products) => console.log(products))
           .catch((error) => console.log(error));
       }
-      console.log("Not created");
+      if (m.key.toString() === "update") {
+        updateProductPricingRule(m.value.toString())
+          .then((products) => console.log(products))
+          .catch((error) => console.log(error));
+      }
+      if (m.key.toString() === "delete") {
+        deleteProductPricingRule(m.value.toString())
+          .then((products) => console.log(products))
+          .catch((error) => console.log(error));
+      }
     });
     consumer.on("disconnected", function(arg) {
       process.exit();

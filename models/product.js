@@ -109,6 +109,21 @@ const updateByID = (id, updateInfo) =>
       return { error };
     });
 
+const updateProducts = (listID, updateInfo) =>
+  ProductModel.updateMany({ _id: { $in: listID } }, updateInfo, { new: true })
+    .then((products) => products)
+    .catch((error) => {
+      return { error };
+    });
+
+// const deleteProducts = (listID) => {
+//   ProductModel.deleteMany({ _id: { $in: listID } })
+//     .then((products) => products)
+//     .catch((error) => {
+//       return { error };
+//     });
+// };
+
 module.exports = {
   ProductSchema,
   ProductModel,
@@ -116,5 +131,6 @@ module.exports = {
   getToppings,
   getProductByID,
   getProductsByCategoryID,
-  updateByID
+  updateByID,
+  updateProducts
 };
