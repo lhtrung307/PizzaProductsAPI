@@ -4,6 +4,8 @@ const Inert = require("inert");
 const Vision = require("vision");
 const Pack = require("./package.json");
 
+const Consumer = require("./consumer.app");
+
 const productRouter = require("./routes/product-routes");
 const categoryRouter = require("./routes/category-routes");
 const variantRouter = require("./routes/variant-routes");
@@ -27,6 +29,9 @@ exports.init = async () => {
     },
     {
       plugin: variantRouter
+    },
+    {
+      plugin: Consumer
     }
   ]);
   return server;

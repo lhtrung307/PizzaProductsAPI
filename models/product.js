@@ -46,6 +46,7 @@ const ProductSchema = new Schema({
     }
   ],
   pricingRule: {
+    _id: false,
     fromDate: Date,
     toDate: Date,
     discountType: {
@@ -101,12 +102,12 @@ const getProductForOrder = (productID) =>
       return { error };
     });
 
-const update = (id, updateInfo) => 
-  ProductModel.findByIdAndUpdate(id, updateInfo, {new :true})
-    .then(product => product)
-    .catch(error => {
-      return {error};
-    })
+const updateByID = (id, updateInfo) =>
+  ProductModel.update({ _id: id }, updateInfo, { new: true })
+    .then((product) => product)
+    .catch((error) => {
+      return { error };
+    });
 
 module.exports = {
   ProductSchema,
@@ -115,5 +116,5 @@ module.exports = {
   getToppings,
   getProductByID,
   getProductsByCategoryID,
-  update
+  updateByID
 };
