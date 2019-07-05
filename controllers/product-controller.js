@@ -24,8 +24,6 @@ module.exports.listToppings = async (request, h) => {
     const toppings = await ProductServices.getAllToppings();
     if (toppings) {
       return h.response(toppings).code(200);
-    } else {
-      return h.response({ message: "You don't have any topping." });
     }
   } catch (error) {
     return h.response(error.message).code(500);
@@ -36,8 +34,8 @@ module.exports.listByCategoryID = async (request, h) => {
   let categoryID = request.params.id;
   let query = request.query;
   let sortType;
-  if (query.sort && (query.sort === 1 || query.sort === -1)) {
-    sortType = query.sort;
+  if (query.sort && (query.sort === "1" || query.sort === "-1")) {
+    sortType = parseInt(query.sort);
   }
   try {
     const pizzas = await ProductServices.getPizzasByCategory(
@@ -46,8 +44,6 @@ module.exports.listByCategoryID = async (request, h) => {
     );
     if (pizzas) {
       return h.response(pizzas).code(200);
-    } else {
-      return h.response({ message: "Category don't have any product." });
     }
   } catch (error) {
     return h.response(error.message).code(500);
@@ -67,7 +63,6 @@ module.exports.detail = async (request, h) => {
       return h.response(product);
     }
   } catch (error) {
-    console.log(error.stack);
     h.response(error).code(500);
   }
 };
@@ -83,7 +78,7 @@ module.exports.listByIDs = async (request, h) => {
       products
     );
     if (productInfos == null) {
-      return h.response({}).code(404);
+      return Boom.notFound("Cannot found any product");
     } else {
       return h.response(productInfos);
     }

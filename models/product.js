@@ -62,7 +62,7 @@ const ProductModel = Mongoose.model("product", ProductSchema);
 
 const getAllPizzas = (sortType) =>
   ProductModel.find({ type: "pizza" })
-    .select("-variantIDs -type")
+    .select("-variantIDs ")
     .sort(sortType)
     .then((products) => products)
     .catch((error) => {

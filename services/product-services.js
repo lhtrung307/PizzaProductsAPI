@@ -4,7 +4,7 @@ const Joi = require("@hapi/joi");
 class ProductServices {
   async getAllPizzas(sortType) {
     let sort;
-    if (!sortType && (sortType !== 1 || sortType !== -1)) {
+    if (!sortType && sortType !== 1 && sortType !== -1) {
       sort = {};
     } else {
       sort = { name: sortType };
@@ -22,8 +22,7 @@ class ProductServices {
     if (!categoryID) {
       throw new Error("CategoryID cannot be empty");
     }
-    if (!sortType && (sortType !== 1 || sortType !== -1)) {
-      console.log(sortType);
+    if (!sortType && sortType !== 1 && sortType !== -1) {
       sort = {};
     } else {
       sort = { name: sortType };
@@ -77,6 +76,7 @@ class ProductServices {
     let productInfos = await Promise.all(
       products.map(async (product) => {
         let productRecord = await Products.getProductByID(product.productID);
+        product.type = productRecord.type;
         if (this.isDiscountProduct(productRecord)) {
           product.pricingRule = {
             discountType: productRecord.pricingRule.discountType,

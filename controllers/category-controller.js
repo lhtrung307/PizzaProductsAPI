@@ -10,8 +10,6 @@ module.exports.list = async (request, h) => {
     const categories = await CategoryServices.getAllCategories(sortType);
     if (categories) {
       return h.response(categories).code(200);
-    } else {
-      return h.response({ message: "You don't have any category." });
     }
   } catch (error) {
     return h.response(error.message).code(500);
@@ -25,6 +23,7 @@ module.exports.create = async (request, h) => {
     console.log(createdCategory);
     return h.response(createdCategory).code(200);
   } catch (error) {
+    console.log(error.stack);
     return h.response(error.stack).code(500);
   }
 };
