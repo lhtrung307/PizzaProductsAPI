@@ -101,11 +101,19 @@ const getProductForOrder = (productID) =>
       return { error };
     });
 
+const update = (id, updateInfo) => 
+  ProductModel.findByIdAndUpdate(id, updateInfo, {new :true})
+    .then(product => product)
+    .catch(error => {
+      return {error};
+    })
+
 module.exports = {
   ProductSchema,
   ProductModel,
   getAllPizzas,
   getToppings,
   getProductByID,
-  getProductsByCategoryID
+  getProductsByCategoryID,
+  update
 };
