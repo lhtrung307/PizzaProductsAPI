@@ -30,7 +30,7 @@ const Router = {
             .label("Body")
         },
         description: "Create new variant",
-        tags: ["api", "order-pizza", "variants"],
+        tags: ["api", "variant"],
         response: { schema: variantResponse }
       },
       handler: VariantControllers.create

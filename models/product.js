@@ -79,7 +79,7 @@ const getToppings = (sortType) =>
     });
 
 const getProductByID = (productID) =>
-  ProductModel.findById(productID)
+  ProductModel.findById(productID, "-variantIDs")
     .then((product) => product)
     .catch((error) => {
       return { error };

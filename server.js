@@ -48,7 +48,8 @@ exports.start = async () => {
         info: {
           title: "Products Endpoints",
           version: Pack.version
-        }
+        },
+        grouping: "tags"
       }
     }
   ]);

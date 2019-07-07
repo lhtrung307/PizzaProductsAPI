@@ -1,13 +1,6 @@
 const CategoryControllers = require("../controllers/category-controller");
 const Joi = require("@hapi/joi");
-
-const categoryResponse = Joi.object()
-  .keys({
-    _id: Joi.string().optional(),
-    name: Joi.string().optional(),
-    description: Joi.string().optional()
-  })
-  .label("Result");
+const ValidateHandle = require("./validate-handle");
 
 const Router = {
   name: "category-router",
@@ -17,21 +10,15 @@ const Router = {
       method: "GET",
       path: "/categories",
       options: {
-        validate: {
-          failAction: (request, h, error) => {
-            return error.isJoi
-              ? h.response(error.details[0]).takeover()
-              : h.response(error).takeover();
-          }
-        },
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.categoryResponseSchema
+        ),
         description: "Get list of categories",
-        tags: ["api", "order-pizza", "categories"],
-        // response: {
-        //   schema: categoryResponse
-        // }
+        tags: ["api", "categories"]
       },
       handler: CategoryControllers.list
     });
+
     server.route({
       method: "POST",
       path: "/categories",
@@ -43,15 +30,13 @@ const Router = {
               description: Joi.string().required()
             })
             .label("Body"),
-          failAction: (request, h, error) => {
-            return error.isJoi
-              ? h.response(error.details[0]).takeover()
-              : h.response(error).takeover();
-          }
+          failAction: ValidateHandle.handleValidateError
         },
         description: "Create new categories",
-        tags: ["api", "order-pizza", "categories"],
-        response: { schema: categoryResponse }
+        tags: ["api", "categories"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.createdCategoryResponseSchema
+        )
       },
       handler: CategoryControllers.create
     });

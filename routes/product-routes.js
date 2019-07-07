@@ -1,6 +1,7 @@
 const Joi = require("joi");
 
 const ProductControllers = require("../controllers/product-controller");
+const ValidateHandle = require("./validate-handle");
 
 const Router = {
   name: "product-router",
@@ -11,7 +12,10 @@ const Router = {
       path: "/pizzas",
       options: {
         description: "Get list of products",
-        tags: ["api", "order-pizza", "product"]
+        tags: ["api", "pizza"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.pizzaResponseSchema
+        )
       },
       handler: ProductControllers.list
     });
@@ -20,8 +24,15 @@ const Router = {
       method: "GET",
       path: "/pizzas/{id}",
       options: {
+        validate: {
+          params: { id: Joi.string().length(24) },
+          failAction: ValidateHandle.handleValidateError
+        },
         description: "Get product detail by id",
-        tags: ["api", "order-pizza", "product"]
+        tags: ["api", "pizza"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.pizzaDetailResponseSchema
+        )
       },
       handler: ProductControllers.detail
     });
@@ -35,18 +46,24 @@ const Router = {
             .items(
               Joi.object().keys({
                 productID: Joi.string().required(),
-                variants: Joi.array().optional()
+                variants: Joi.array()
+                  .items(
+                    Joi.object().keys({
+                      key: Joi.string().example("size"),
+                      value: Joi.string().example("S")
+                    })
+                  )
+                  .optional()
               })
             )
             .label("Body"),
-          failAction: (request, h, error) => {
-            return error.isJoi
-              ? h.response(error.details[0]).takeover()
-              : h.response(error).takeover();
-          }
+          failAction: ValidateHandle.handleValidateError
         },
         description: "Get pizzas by pizza ids",
-        tags: ["api", "order-pizza", "pizza"]
+        tags: ["api", "pizza"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.listPizzaResponseSchema
+        )
       },
       handler: ProductControllers.listByIDs
     });
@@ -59,14 +76,13 @@ const Router = {
           params: {
             id: Joi.string().required()
           },
-          failAction: (request, h, error) => {
-            return error.isJoi
-              ? h.response(error.details[0]).takeover()
-              : h.response(error).takeover();
-          }
+          failAction: ValidateHandle.handleValidateError
         },
         description: "Get pizzas by category ids",
-        tags: ["api", "order-pizza", "pizzas"]
+        tags: ["api", "pizza"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.pizzaResponseSchema
+        )
       },
       handler: ProductControllers.listByCategoryID
     });
@@ -76,7 +92,8 @@ const Router = {
       path: "/toppings",
       options: {
         description: "Get list of toppings",
-        tags: ["api", "order-pizza", "toppings"]
+        tags: ["api", "topping"],
+        response: ValidateHandle.responseOptions(ValidateHandle.toppingResponse)
       },
       handler: ProductControllers.listToppings
     });
@@ -86,7 +103,10 @@ const Router = {
       path: "/best-sellers",
       options: {
         description: "Get list of best seller pizzas",
-        tags: ["api", "order-pizza", "pizzas"]
+        tags: ["api", "pizza"],
+        response: ValidateHandle.responseOptions(
+          ValidateHandle.pizzaResponseSchema
+        )
       },
       handler: ProductControllers.bestSellers
     });
