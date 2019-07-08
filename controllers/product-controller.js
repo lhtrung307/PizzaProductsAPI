@@ -90,6 +90,13 @@ module.exports.listByIDs = async (request, h) => {
 module.exports.bestSellers = async (request, h) => {
   try {
     let bestSellers = await ProductServices.getBestSellers();
+    let filtered = bestSellers.filter((item) => {
+      return item != null;
+    });
+    if (filtered.length === 0) {
+      console.log(filtered);
+      return h.response("Best seller is empty");
+    }
     return h.response(bestSellers);
   } catch (error) {
     return h.response(error.message).code(500);

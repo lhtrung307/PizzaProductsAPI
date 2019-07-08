@@ -139,10 +139,18 @@ class ProductServices {
   async getBestSellers() {
     let date = new Date();
     date.setMonth(date.getMonth() - 1);
-    let result = await axios.get(
-      `https://pizza-products-api.glitch.me/order-detail-report/${date}`
-    );
+    console.log(date.toISOString());
+    let result;
+    try {
+      result = await axios.get(
+        `https://order-pizza-api.glitch.me/order-detail-report/` +
+          date.toISOString()
+      );
+    } catch (error) {
+      console.log(error.stack);
+    }
     let orderDetails = result.data;
+
     let productIDs = orderDetails.map((orderDetail) => orderDetail._id);
     let bestSellers = await this.getProductByIDs(productIDs);
     return bestSellers;

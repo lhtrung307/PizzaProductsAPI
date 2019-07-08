@@ -105,7 +105,8 @@ const Router = {
         description: "Get list of best seller pizzas",
         tags: ["api", "pizza"],
         response: ValidateHandle.responseOptions(
-          ValidateHandle.pizzaResponseSchema
+          ValidateHandle.pizzaResponseSchema,
+          { 200: Joi.string().example("Best seller is empty") }
         )
       },
       handler: ProductControllers.bestSellers

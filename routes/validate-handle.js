@@ -103,7 +103,7 @@ class ValidateHandle {
       .options({ allowUnknown: true });
   }
 
-  responseOptions(schema) {
+  responseOptions(schema, options) {
     return {
       status: {
         200: schema,
@@ -111,7 +111,8 @@ class ValidateHandle {
           statusCode: Joi.number().example(500),
           error: Joi.string(),
           message: Joi.string()
-        })
+        }),
+        ...options
       },
       failAction: this.handleValidateError
     };
