@@ -11,8 +11,8 @@ class ValidateHandle {
       .options({ allowUnknown: true })
       .label("Result");
 
-    this.createdCategoryResponseSchema = Joi.array()
-      .items({
+    this.createdCategoryResponseSchema = Joi.object()
+      .keys({
         _id: Joi.object(),
         name: Joi.string().optional(),
         description: Joi.string().optional()
@@ -37,6 +37,7 @@ class ValidateHandle {
         description: Joi.string(),
         price: Joi.number(),
         discountPrice: Joi.number(),
+        image: Joi.string(),
         variantProducts: Joi.array().items(
           Joi.object().keys({
             key: Joi.string(),
@@ -64,6 +65,7 @@ class ValidateHandle {
         description: Joi.string(),
         price: Joi.number(),
         discountPrice: Joi.number(),
+        image: Joi.string(),
         variantProducts: Joi.array().items(
           Joi.object().keys({
             key: Joi.string(),

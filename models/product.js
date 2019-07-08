@@ -45,6 +45,9 @@ const ProductSchema = new Schema({
       }
     }
   ],
+  image: {
+    type: String
+  },
   pricingRule: {
     _id: false,
     fromDate: Date,

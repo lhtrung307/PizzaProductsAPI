@@ -3,13 +3,14 @@ const Joi = require("@hapi/joi");
 
 const variantResponse = Joi.object()
   .keys({
-    _id: Joi.string().optional(),
+    _id: Joi.object().optional(),
     key: Joi.string().optional(),
     acceptValues: Joi.array().items(Joi.string().optional()),
     type: Joi.string().optional(),
     label: Joi.string().optional()
   })
-  .label("Result");
+  .label("Result")
+  .options({ allowUnknown: true });
 
 const Router = {
   name: "variant-router",

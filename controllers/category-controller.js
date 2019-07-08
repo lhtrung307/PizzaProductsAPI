@@ -1,9 +1,10 @@
 const CategoryServices = require("../services/category-services");
+const Boom = require("@hapi/boom");
 
 module.exports.list = async (request, h) => {
   let query = request.query;
   let sortType;
-  if (query.sort && (query.sort === 1 || query.sort === -1)) {
+  if (query.sort && (query.sort === "1" || query.sort === "-1")) {
     sortType = query.sort;
   }
   try {
@@ -12,7 +13,7 @@ module.exports.list = async (request, h) => {
       return h.response(categories).code(200);
     }
   } catch (error) {
-    return h.response(error.message).code(500);
+    return Boom.badImplementation(error);
   }
 };
 
@@ -24,6 +25,6 @@ module.exports.create = async (request, h) => {
     return h.response(createdCategory).code(200);
   } catch (error) {
     console.log(error.stack);
-    return h.response(error.stack).code(500);
+    return Boom.badImplementation(error);
   }
 };

@@ -26,9 +26,7 @@ const getAll = (sortType) =>
 
 const save = (category) =>
   CategoryModel.create(category)
-    .then((createdCategory) => {
-      return createdCategory;
-    })
+    .then((createdCategory) => createdCategory)
     .catch((error) => {
       return { error };
     });

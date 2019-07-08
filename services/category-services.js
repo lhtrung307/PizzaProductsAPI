@@ -3,7 +3,7 @@ const Category = require("../models/category");
 class CategoryServices {
   async getAllCategories(sortType) {
     let sort;
-    if (!sortType && (sortType !== 1 || sortType !== -1)) {
+    if (!sortType && (sortType !== "1" || sortType !== "-1")) {
       sort = {};
     } else {
       sort = { name: sortType };

@@ -279,9 +279,9 @@ describe("Product endpoints", () => {
         url: `${url}/${1234}`
       };
       const response = await server.inject(injectOptions);
-      expect(response.statusCode).toEqual(400);
+      expect(response.statusCode).toEqual(200);
       const payload = JSON.parse(response.payload);
-      expect(payload).toHaveProperty("error");
+      expect(payload).toHaveProperty("message");
     });
 
     it("Should not get details of pizza when id is wrong", async () => {

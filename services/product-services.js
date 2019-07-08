@@ -140,7 +140,7 @@ class ProductServices {
     let date = new Date();
     date.setMonth(date.getMonth() - 1);
     let result = await axios.get(
-      `https://pizza-orders.herokuapp.com/order-detail-report/${date}`
+      `https://pizza-products-api.glitch.me/order-detail-report/${date}`
     );
     let orderDetails = result.data;
     let productIDs = orderDetails.map((orderDetail) => orderDetail._id);

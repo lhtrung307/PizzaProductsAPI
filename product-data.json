@@ -1,72 +1,229 @@
 [
   {
     "type": "pizza",
-    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
     "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
-    "name": "Pizza 3 con tôm",
-    "description": "Chỉ gồm 3 con tôm siêu bự",
+    "name": "MATCHA PIZZA TERIYAKI OCTOPUS",
+    "description": "Matcha hand-tossed, Marinated octopus, Teriyaki sauce, green capsicum, onion, red onion, shallot, pink ginger and fish savings",
     "price": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C17.png",
     "discountPrice": 0,
     "variantProducts": [
-      { "key": "size", "value": "S", "price": 100000 },
-      { "key": "size", "value": "M", "price": 200000 },
-      { "key": "size", "value": "L", "price": 300000 }
+      { "key": "size", "value": "S", "price": 16 },
+      { "key": "size", "value": "M", "price": 22 },
+      { "key": "size", "value": "L", "price": 30 }
     ]
   },
   {
     "type": "pizza",
-    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
     "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
-    "name": "Pizza bạch tuộc nướng BBQ",
-    "description": "Bạch tuộc nướng gần chín",
+    "name": "CHEESY BITES TRIO SHRIMP",
+    "description": "Cheesy Bites Trio Shrimp Pizza topped with tremium shrimps combined with pineapple, olive and red capsicum on special Cheesy Mayo sauce",
     "price": 0,
     "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C19.png",
     "variantProducts": [
-      { "key": "size", "value": "S", "price": 100000 },
-      { "key": "size", "value": "M", "price": 200000 },
-      { "key": "size", "value": "L", "price": 300000 }
+      { "key": "size", "value": "S", "price": 15 },
+      { "key": "size", "value": "M", "price": 20 },
+      { "key": "size", "value": "L", "price": 25 }
     ]
   },
   {
     "type": "pizza",
-    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
     "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
-    "name": "Pizza sầu riêng",
-    "description": "Nỗi sầu không của riêng ai",
+    "name": "SEAFOOD DELUXE",
+    "description": "Shrimps, squids, tomato cherry, zucchini topped with Mozzarella cheese on a bed of Pesto sauce",
     "price": 0,
     "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C18.png",
     "variantProducts": [
-      { "key": "size", "value": "S", "price": 100000 },
-      { "key": "size", "value": "M", "price": 200000 },
-      { "key": "size", "value": "L", "price": 300000 }
+      { "key": "size", "value": "S", "price": 11 },
+      { "key": "size", "value": "M", "price": 16 },
+      { "key": "size", "value": "L", "price": 22 }
     ]
   },
   {
     "type": "pizza",
-    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
     "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
-    "name": "Pizza gà rim Coop Mart",
-    "description": "Gà nhiều tới nỗi bạn ăn chỉ muốn khóc",
+    "name": "SEAFOOD PESTO",
+    "description": "Shrimps, squid rings and mushroom on a bed of Pesto sauce, topped with Mozzarella cheese and parsley.",
     "price": 0,
     "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C02.png",
     "variantProducts": [
-      { "key": "size", "value": "S", "price": 100000 },
-      { "key": "size", "value": "M", "price": 200000 },
-      { "key": "size", "value": "L", "price": 300000 }
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
     ]
   },
   {
     "type": "pizza",
-    "categoryIDs": [ObjectId("5d11ef9625ae3c4d440caa89")],
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
     "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
-    "name": "Pizza sữa chua nếp cẩm",
-    "description": "Nếp cẩm hay là nếp than đây???",
+    "name": "OCEAN DELIGHT",
+    "description": "Squid, crab stick, pineapple, green pepper, onion, Cheesy mayo sauce and mozzarella",
     "price": 0,
     "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C07.png",
     "variantProducts": [
-      { "key": "size", "value": "S", "price": 100000 },
-      { "key": "size", "value": "M", "price": 200000 },
-      { "key": "size", "value": "L", "price": 300000 }
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "FISHERMAN'S TUNA",
+    "description": "Gentle seas tuna, crab stick, onions, pineapple on the sauce Pesto",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C09.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22ecb6d1a9c7007c0c6781")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "SHRIMP SCAMPI",
+    "description": "Shrimps, mushroom, onion and capsicum topped with Mozzarella cheese on a bed of Garlic-parsley Butter sauce ",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C13.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f0ad56faef012579fb05")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "SUPER SUPREME",
+    "description": "Pepperoni, ham, beef, chicken sausage, pineapple, mushrooms, onions, capsicums and black olives",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C01.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 12 },
+      { "key": "size", "value": "M", "price": 18 },
+      { "key": "size", "value": "L", "price": 26 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f0ad56faef012579fb05")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "SUPREME MEAT LOVER'S",
+    "description": "Bacon, beef, ham and pepperoni",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C03.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f0ad56faef012579fb05")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "CHICKEN SUPREME",
+    "description": "2 types of chicken, peppers, onions and mushrooms",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C08.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 11 },
+      { "key": "size", "value": "M", "price": 16 },
+      { "key": "size", "value": "L", "price": 22 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f0ad56faef012579fb05")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "PEPPERONI",
+    "description": "Pepperoni with Mozzarella supreme",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C06.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f0ad56faef012579fb05")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "HAWAIIAN PARADISE",
+    "description": "Ham, pineapple, Mozzarella cheese and tomato sauce",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C11.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f1f456faef012579fb06")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "VEGGIE SUPREME",
+    "description": "Black olive, cherry tomato, mushrooms, pineapple and sweet corn with Mozzarella cheese",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C10.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f1f456faef012579fb06")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "CHEESE LOVER’S",
+    "description": "A triple layer of Mozzarella cheese on top of tomato sauce",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://www.pizzahut.vn/menu/v000001/hk/en/images/C12.png",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
+    ]
+  },
+  {
+    "type": "pizza",
+    "categoryIDs": [ObjectId("5d22f1f456faef012579fb06")],
+    "variantIDs": [ObjectId("5d11fbeaf40e0f3cfc9c1a55")],
+    "name": "PACIFIC VEGGIE PIZZA",
+    "description": "Roasted red peppers, fresh baby spinach, fresh onions, fresh mushrooms, tomatoes, black olives, cheeses made with 100% real mozzarella, feta and provolone, sprinkled with garlic herb seasoning, on a cheesy Parmesan Asiago crust.",
+    "price": 0,
+    "discountPrice": 0,
+    "image": "https://d16jhsvmsopai9.cloudfront.net/upload/img/veryveggie2.jpg",
+    "variantProducts": [
+      { "key": "size", "value": "S", "price": 10 },
+      { "key": "size", "value": "M", "price": 15 },
+      { "key": "size", "value": "L", "price": 20 }
     ]
   }
 ]
