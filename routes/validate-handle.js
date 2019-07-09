@@ -4,7 +4,7 @@ class ValidateHandle {
   constructor() {
     this.categoryResponseSchema = Joi.array()
       .items({
-        _id: Joi.object(),
+        _id: Joi.object().optional(),
         name: Joi.string().optional(),
         description: Joi.string().optional()
       })
@@ -13,7 +13,7 @@ class ValidateHandle {
 
     this.createdCategoryResponseSchema = Joi.object()
       .keys({
-        _id: Joi.object(),
+        _id: Joi.object().optional(),
         name: Joi.string().optional(),
         description: Joi.string().optional()
       })
@@ -30,21 +30,25 @@ class ValidateHandle {
             discount: Joi.number()
           })
           .optional(),
-        categoryIDs: Joi.array().items(Joi.object()),
-        _id: Joi.object(),
-        type: Joi.string(),
-        name: Joi.string(),
-        description: Joi.string(),
-        price: Joi.number(),
-        discountPrice: Joi.number(),
-        image: Joi.string(),
-        variantProducts: Joi.array().items(
-          Joi.object().keys({
-            key: Joi.string(),
-            values: Joi.string(),
-            price: Joi.number()
-          })
-        )
+        categoryIDs: Joi.array()
+          .items(Joi.object())
+          .optional(),
+        _id: Joi.object().optional(),
+        type: Joi.string().optional(),
+        name: Joi.string().optional(),
+        description: Joi.string().optional(),
+        price: Joi.number().optional(),
+        discountPrice: Joi.number().optional(),
+        image: Joi.string().optional(),
+        variantProducts: Joi.array()
+          .items(
+            Joi.object().keys({
+              key: Joi.string().optional(),
+              values: Joi.string().optional(),
+              price: Joi.number().optional()
+            })
+          )
+          .optional()
       })
       .options({ allowUnknown: true });
 
