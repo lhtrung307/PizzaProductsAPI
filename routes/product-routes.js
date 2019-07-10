@@ -12,10 +12,10 @@ const Router = {
       path: "/pizzas",
       options: {
         description: "Get list of products",
-        tags: ["api", "pizza"],
-        response: ValidateHandle.responseOptions(
-          ValidateHandle.pizzaResponseSchema
-        )
+        tags: ["api", "pizza"]
+        // response: ValidateHandle.responseOptions(
+        //   ValidateHandle.pizzaResponseSchema
+        // )
       },
       handler: ProductControllers.list
     });
@@ -79,10 +79,10 @@ const Router = {
           failAction: ValidateHandle.handleValidateError
         },
         description: "Get pizzas by category ids",
-        tags: ["api", "pizza"],
-        response: ValidateHandle.responseOptions(
-          ValidateHandle.pizzaResponseSchema
-        )
+        tags: ["api", "pizza"]
+        // response: ValidateHandle.responseOptions(
+        //   ValidateHandle.pizzaResponseSchema
+        // )
       },
       handler: ProductControllers.listByCategoryID
     });
