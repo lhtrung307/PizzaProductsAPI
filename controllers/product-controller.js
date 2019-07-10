@@ -60,6 +60,7 @@ module.exports.detail = async (request, h) => {
     if (product == null) {
       return Boom.notFound("Pizza not found");
     } else {
+      console.log(product);
       return h.response(product);
     }
   } catch (error) {

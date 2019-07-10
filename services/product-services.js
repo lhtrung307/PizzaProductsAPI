@@ -14,7 +14,17 @@ class ProductServices {
     if (products.error) {
       throw products.error;
     }
-    return products;
+    let result = products.map((product) => {
+      product = product.toObject();
+      if (product.pricingRule) {
+        product.discountAmount = this.calculateDiscountAmount(
+          product,
+          product.pricingRule
+        );
+      }
+      return product;
+    });
+    return result;
   }
 
   async getPizzasByCategory(categoryID, sortType) {
@@ -31,7 +41,17 @@ class ProductServices {
     if (products.error) {
       throw products.error;
     }
-    return products;
+    let result = products.map((product) => {
+      product = product.toObject();
+      if (product.pricingRule) {
+        product.discountAmount = this.calculateDiscountAmount(
+          product,
+          product.pricingRule
+        );
+      }
+      return product;
+    });
+    return result;
   }
 
   async getAllToppings() {
@@ -53,7 +73,29 @@ class ProductServices {
     if (product.error) {
       throw product.error;
     }
+    let discountAmount;
+    product = product.toObject();
+    if (product.pricingRule) {
+      discountAmount = this.calculateDiscountAmount(
+        product,
+        product.pricingRule
+      );
+      product.discountAmount = discountAmount;
+      console.log(product.discountAmount);
+    }
     return product;
+  }
+
+  calculateDiscountAmount(product, pricingRule) {
+    if (pricingRule) {
+      if (pricingRule.discountType === "amount") {
+        return pricingRule.discount;
+      } else if (pricingRule.discountType === "percentage") {
+        return (pricingRule.discount * product.price) / 100;
+      }
+    } else {
+      return 0;
+    }
   }
 
   async getProductByIDs(productIDs) {
@@ -153,7 +195,17 @@ class ProductServices {
 
     let productIDs = orderDetails.map((orderDetail) => orderDetail._id);
     let bestSellers = await this.getProductByIDs(productIDs);
-    return bestSellers;
+    let result = products.map((product) => {
+      product = product.toObject();
+      if (product.pricingRule) {
+        product.discountAmount = this.calculateDiscountAmount(
+          product,
+          product.pricingRule
+        );
+      }
+      return product;
+    });
+    return result;
   }
 }
 

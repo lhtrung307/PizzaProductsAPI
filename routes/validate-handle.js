@@ -40,6 +40,7 @@ class ValidateHandle {
         price: Joi.number().optional(),
         discountPrice: Joi.number().optional(),
         image: Joi.string().optional(),
+        discountAmount: Joi.number().optional(),
         variantProducts: Joi.array()
           .items(
             Joi.object().keys({
@@ -69,6 +70,7 @@ class ValidateHandle {
         description: Joi.string(),
         price: Joi.number(),
         discountPrice: Joi.number(),
+        discountAmount: Joi.number(),
         image: Joi.string(),
         variantProducts: Joi.array().items(
           Joi.object().keys({
