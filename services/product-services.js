@@ -188,7 +188,7 @@ class ProductServices {
 
     let productIDs = orderDetails.map((orderDetail) => orderDetail._id);
     let bestSellers = await this.getProductByIDs(productIDs);
-    let result = bestSellers.map((product) => {
+    let bestSellersData = bestSellers.map((product) => {
       product = product.toObject();
       product.discountAmount = this.calculateDiscountAmount(
         product,
@@ -197,7 +197,7 @@ class ProductServices {
 
       return product;
     });
-    return result;
+    return bestSellersData;
   }
 }
 
