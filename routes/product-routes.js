@@ -103,10 +103,10 @@ const Router = {
       path: "/best-sellers",
       options: {
         description: "Get list of best seller pizzas",
-        tags: ["api", "pizza"],
-        response: ValidateHandle.responseOptions(
-          ValidateHandle.pizzaResponseSchema
-        )
+        tags: ["api", "pizza"]
+        // response: ValidateHandle.responseOptions(
+        //   ValidateHandle.pizzaResponseSchema
+        // )
       },
       handler: ProductControllers.bestSellers
     });

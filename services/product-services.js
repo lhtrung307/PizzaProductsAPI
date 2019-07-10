@@ -16,12 +16,10 @@ class ProductServices {
     }
     let result = products.map((product) => {
       product = product.toObject();
-      if (product.pricingRule) {
-        product.discountAmount = this.calculateDiscountAmount(
-          product,
-          product.pricingRule
-        );
-      }
+      product.discountAmount = this.calculateDiscountAmount(
+        product,
+        product.pricingRule
+      );
       return product;
     });
     return result;
@@ -43,12 +41,11 @@ class ProductServices {
     }
     let result = products.map((product) => {
       product = product.toObject();
-      if (product.pricingRule) {
-        product.discountAmount = this.calculateDiscountAmount(
-          product,
-          product.pricingRule
-        );
-      }
+      product.discountAmount = this.calculateDiscountAmount(
+        product,
+        product.pricingRule
+      );
+
       return product;
     });
     return result;
@@ -75,14 +72,10 @@ class ProductServices {
     }
     let discountAmount;
     product = product.toObject();
-    if (product.pricingRule) {
-      discountAmount = this.calculateDiscountAmount(
-        product,
-        product.pricingRule
-      );
-      product.discountAmount = discountAmount;
-      console.log(product.discountAmount);
-    }
+    discountAmount = this.calculateDiscountAmount(product, product.pricingRule);
+    product.discountAmount = discountAmount;
+    console.log(product.discountAmount);
+
     return product;
   }
 
@@ -195,14 +188,13 @@ class ProductServices {
 
     let productIDs = orderDetails.map((orderDetail) => orderDetail._id);
     let bestSellers = await this.getProductByIDs(productIDs);
-    let result = products.map((product) => {
+    let result = bestSellers.map((product) => {
       product = product.toObject();
-      if (product.pricingRule) {
-        product.discountAmount = this.calculateDiscountAmount(
-          product,
-          product.pricingRule
-        );
-      }
+      product.discountAmount = this.calculateDiscountAmount(
+        product,
+        product.pricingRule
+      );
+
       return product;
     });
     return result;
